@@ -50,3 +50,39 @@ created for test cases, and a public key, used to verify the signature on those 
 When using a real identity provider, our application doesn't need to know the private
 signing key.  We just need a public key or certificate to verify the signature, which
 we get from <https://www.googleapis.com/oauth2/v3/certs>
+
+
+## The authenticated Django REST Framework endpoint
+
+This API provides just one endpoint, returning a payload containing the string "Hello World"
+
+If you attempt to access this endpoint via the OAuth2 Proxy (listening on port 4180), and you
+don't already have an authentication token, you should be prompted to sign in with your Google
+account, and then you should see the Django endpoint responding with your Google identity in
+the top-right corner:
+
+![picture](docs/images/drf-with-jwt-auth.png)
+
+
+## Response when unauthorized:
+
+Running OAuth2 Proxy in a local Docker container doesn't provide exactly the same experience
+as running OAuth2 Proxy in a production-worthy reverse proxy / load balancer.  In production,
+you can ensure that all incoming requests for your application get redirected via the OAuth2
+Proxy, but when running locally, it is possible that you will get an unauthorized error due
+to a stale authentication token, and you might need to remove your cookies and reload the page
+to resolve it:
+
+![picture](docs/images/drf-with-jwt-unauthorized.png)
+
+
+## WARNING - NOT SUITABLE FOR PRODUCTION
+
+There are settings in `main/settings.py` including `DEBUG = True` which are not safe
+to use in production.  Further work would be needed to fine-tune the settings to
+make the application safe to run in proudction. See:
+<https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/>
+
+Similarly, Django's built-in development server is not suitable for production use.
+A production-grade web application stack should be used like NGINX / gunicorn or
+Apache / mod_wsgi.
