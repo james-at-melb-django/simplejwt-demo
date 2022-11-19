@@ -1,0 +1,19 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Unit test / coverage reports
+.coverage
+.pytest_cache/
+
+# Virtual Environments
+.venv
+venv/
+
+# mypy
+.mypy_cache/
+.dmypy.json
+dmypy.json
+
+oauth2-proxy-development.sh
