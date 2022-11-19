@@ -3,6 +3,8 @@
 This is a simple demo of a Django REST Framework backend using Google authentication
 via [OAuth2 Proxy](https://github.com/oauth2-proxy/oauth2-proxy).
 
+The Django REST Framework authentication is implemented using
+[Simple JWT](https://github.com/jazzband/djangorestframework-simplejwt).
 
 ## Creating a Google OAuth2 app:
 
