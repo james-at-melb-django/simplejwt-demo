@@ -80,7 +80,7 @@ to resolve it:
 
 There are settings in `main/settings.py` including `DEBUG = True` which are not safe
 to use in production.  Further work would be needed to fine-tune the settings to
-make the application safe to run in proudction. See:
+make the application safe to run in production. See:
 <https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/>
 
 Similarly, Django's built-in development server is not suitable for production use.
